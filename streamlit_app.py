@@ -13,5 +13,5 @@ my_fruit_list = my_fruit_list.set_index('Fruit')
 
 
 # Display the DataFrame
-##streamlit.dataframe(my_fruit_list)
+streamlit.dataframe(my_fruit_list)
 
