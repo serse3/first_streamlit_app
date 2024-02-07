@@ -2,12 +2,25 @@ import streamlit
 import pandas
 import snowflake.connector
 
+
+
+#Estoy realizando una conexión con snowflake
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+
+#Creo un cursor para ejecutar una consulta. 
 my_cur = my_cnx.cursor()
+#Ejecuto la consulta
 my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+#Recupero la primera fila de mi consulta: 
 my_data_row = my_cur.fetchone()
+#Muestro por pantalla un texto:
 streamlit.text("Hello from Snowflake:")
+#Muestro la primera fila recuperada
 streamlit.text(my_data_row)
+
+
+streamlit.header("The fruit load list contains:")
+streamlit.dataframe(my_data_row)
 
 
 streamlit.header('Breakfast Menu')
