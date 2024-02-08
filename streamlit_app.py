@@ -5,11 +5,7 @@ import requests
 from urllib.error import URLError
 
 
-  #Otros elementos visuales: 
-streamlit.header('Breakfast Menu')
 
-
-streamlit.stop()
 def Top():    
   # Read the fruit list from a CSV file
   my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt") 
@@ -33,8 +29,13 @@ def getFruit():
   except URLError as e:
     streamlit.error()
 
+#Starting: 
+streamlit.header('Breakfast Menu')
 #Defino la tabla principal
 Top()
+
+
+streamlit.stop()
 streamlit.header("Fruityvice Fruit Advice!")
 getFruit()
 
