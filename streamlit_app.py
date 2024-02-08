@@ -6,7 +6,7 @@ from urllib.error import URLError
 
 
   #Otros elementos visuales: 
-  streamlit.header('Breakfast Menu')
+streamlit.header('Breakfast Menu')
 def Top():    
 
   # Read the fruit list from a CSV file
