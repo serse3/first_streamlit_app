@@ -7,8 +7,10 @@ from urllib.error import URLError
 
   #Otros elementos visuales: 
 streamlit.header('Breakfast Menu')
-def Top():    
 
+
+streamlit.stop()
+def Top():    
   # Read the fruit list from a CSV file
   my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt") 
   # Display the table on the page.
@@ -17,13 +19,6 @@ def Top():
   fruits_to_show = my_fruit_list.loc[fruits_selected]
   # Display the DataFrame
   streamlit.dataframe(fruits_to_show)
-
-
-Top()
-streamlit.header("Fruityvice Fruit Advice!")
-getFruit()
-
-
 def getFruit():
   try:
     fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
@@ -37,6 +32,14 @@ def getFruit():
       streamlit.dataframe(fruityvice_normalized)
   except URLError as e:
     streamlit.error()
+
+#Defino la tabla principal
+Top()
+streamlit.header("Fruityvice Fruit Advice!")
+getFruit()
+
+
+
 
 
 
