@@ -33,11 +33,9 @@ def getFruit():
 streamlit.header('Breakfast Menu')
 #Defino la tabla principal
 Top()
-
-
-streamlit.stop()
 streamlit.header("Fruityvice Fruit Advice!")
 getFruit()
+streamlit.stop()
 
 
 
