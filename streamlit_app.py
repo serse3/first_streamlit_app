@@ -5,8 +5,8 @@ import requests
 from urllib.error import URLError
 
 # Dibuja un botón
-if st.button('Haz clic aquí'):
-    st.write('¡El botón ha sido presionado!')
+if streamlit.button('Haz clic aquí'):
+    streamlit.write('¡El botón ha sido presionado!')
 def Top():    
   # Read the fruit list from a CSV file
   my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt") 
