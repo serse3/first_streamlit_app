@@ -3,18 +3,10 @@ import pandas
 import snowflake.connector
 import requests
 from urllib.error import URLError
-# Aplicar estilo al fondo de la página
-st.markdown(
-    """
-    <style>
-    body {
-        background-color: #f0f2f6; /* Cambia este color al que desees */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
+# Dibuja un botón
+if st.button('Haz clic aquí'):
+    st.write('¡El botón ha sido presionado!')
 def Top():    
   # Read the fruit list from a CSV file
   my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt") 
