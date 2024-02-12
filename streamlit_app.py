@@ -4,12 +4,6 @@ import snowflake.connector
 import requests
 from urllib.error import URLError
 
-st.header("Título en cursiva y color rojo")
-
-# Aplicar estilos CSS directamente
-st.markdown("<style>h1{color: red; font-style: italic;}</style>", unsafe_allow_html=True)
-st.header("Título con estilo aplicado mediante CSS")
-
 
 def Top():    
   # Read the fruit list from a CSV file
