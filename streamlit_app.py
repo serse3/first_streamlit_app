@@ -9,13 +9,19 @@ streamlit.markdown(
     """
     <style>
     body {
-        background-color: #DFD151; /* Cambia este color al que desees */
+        background-color: #f0f2f6; /* Cambia este color al que desees */
     }
     </style>
     """,
     unsafe_allow_html=True
 )
 
+# Contenido de la aplicación
+st.title("Mi Aplicación Streamlit")
+st.write("¡Aquí puedes agregar todo tu contenido!")
+
+
+    
 # Dibuja un botón
 if streamlit.button('Haz clic aquí'):
     streamlit.write('¡El botón ha sido presionado!')
