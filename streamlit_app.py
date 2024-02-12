@@ -38,14 +38,16 @@ streamlit.header("Fruityvice Fruit Advice!")
 streamlit.markdown("<style>h1{color: red; font-style:italic;}</style>",unsafe_allow_html=True)
 
 getFruit()
+
+
+st.header("Título en cursiva y color rojo")
+
+# Aplicar estilos CSS directamente
+st.markdown("<style>h1{color: red; font-style: italic;}</style>", unsafe_allow_html=True)
+st.header("Título con estilo aplicado mediante CSS")
+
 streamlit.stop()
 
-
-
-
-
-
-streamlit.stop()
 
 
 
