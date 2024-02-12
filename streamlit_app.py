@@ -34,6 +34,9 @@ streamlit.header('Breakfast Menu')
 #Defino la tabla principal
 Top()
 streamlit.header("Fruityvice Fruit Advice!")
+
+streamlit.markdown("<style>h1{color: red; font-style:italic;}</style>",unsafe_allow_html=True)
+
 getFruit()
 streamlit.stop()
 
