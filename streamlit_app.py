@@ -9,7 +9,7 @@ streamlit.markdown(
     """
     <style>
     body {
-        background-color: #f0f2f6; /* Cambia este color al que desees */
+        background-color: #DFD151; /* Cambia este color al que desees */
     }
     </style>
     """,
