@@ -7,6 +7,25 @@ from urllib.error import URLError
 #Starting: 
 streamlit.header('World data view')
 
+#Quiero ver si la comunicación con snowflake funciona correctamente:
+
+#Estoy realizando una conexión con snowflake
+my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+#Creo un cursor para ejecutar una consulta. 
+my_cur = my_cnx.cursor()
+#Ejecuto la consulta
+my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
+#Recupero la primera fila de mi consulta: 
+my_data_row = my_cur.fetchone()
+#Muestro por pantalla un texto:
+streamlit.text("Hello from Snowflake:")
+#Muestro la primera fila recuperada
+streamlit.text(my_data_row)
+
+
+
+streamlit.stop()
+
 
 def Top():    
   # Read the fruit list from a CSV file
@@ -30,6 +49,7 @@ def getFruit():
       streamlit.dataframe(fruityvice_normalized)
   except URLError as e:
     streamlit.error()
+streamlit.write('The user entered ', fruit_choice)
 
 
 #Defino la tabla principal
@@ -41,28 +61,13 @@ streamlit.markdown("<style>h1{color: red; font-style:italic;}</style>",unsafe_al
 getFruit()
 
 
-streamlit.stop()
 
 
 
 
 
-streamlit.write('The user entered ', fruit_choice)
 
-#Quiero ver si la comunicación con snowflake funciona correctamente:
 
-#Estoy realizando una conexión con snowflake
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-#Creo un cursor para ejecutar una consulta. 
-my_cur = my_cnx.cursor()
-#Ejecuto la consulta
-my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
-#Recupero la primera fila de mi consulta: 
-my_data_row = my_cur.fetchone()
-#Muestro por pantalla un texto:
-streamlit.text("Hello from Snowflake:")
-#Muestro la primera fila recuperada
-streamlit.text(my_data_row)
 
 #Hacemos otra llamada a snowflake para recuperar datos:
 streamlit.header("The fruit load list contains:")
