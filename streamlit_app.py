@@ -4,6 +4,8 @@ import snowflake.connector
 import requests
 from urllib.error import URLError
 
+#Starting: 
+streamlit.header('World data view')
 
 
 def Top():    
@@ -29,8 +31,7 @@ def getFruit():
   except URLError as e:
     streamlit.error()
 
-#Starting: 
-streamlit.header('Breakfast Menu')
+
 #Defino la tabla principal
 Top()
 streamlit.header("Fruityvice Fruit Advice!")
@@ -45,15 +46,8 @@ streamlit.stop()
 
 
 
-  
 
 streamlit.write('The user entered ', fruit_choice)
-
-
-
-
-
-
 
 #Quiero ver si la comunicación con snowflake funciona correctamente:
 
