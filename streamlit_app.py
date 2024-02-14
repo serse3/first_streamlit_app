@@ -27,7 +27,7 @@ my_data_row = my_cur.fetch_pandas_all()
 #Muestro por pantalla un texto:
 streamlit.text("Hello from Snowflake:")
 #Muestro la primera fila recuperada
-streamlit.text(my_data_row)
+streamlit.dataframe(my_data_row)
 
 
 
