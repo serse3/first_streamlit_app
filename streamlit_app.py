@@ -36,7 +36,7 @@ streamlit.dataframe(my_data_row)
 
 # Crear un gráfico de barras
 fig, ax = plt.subplots()
-ax.bar(my_data_row['NAME'], my_data_row['SUM'])
+bars = ax.bar(my_data_row['NAME'], my_data_row['SUM'])
 
 # Añadir título y etiquetas a los ejes
 ax.set_title('Gráfico de Barras')
@@ -45,7 +45,7 @@ ax.set_ylabel('SUM')
 plt.xticks(rotation=90)
 
 # Mostrar el gráfico en Streamlit
-streamlit.pyplot(fig, use_container_width=True)
+st.pyplot(fig, use_container_width=True)
 
 # Capturar la selección del usuario
 bar_clicked = streamlit.pyplot()
@@ -56,7 +56,6 @@ if bar_clicked:
         # Obtener los detalles de la barra seleccionada
         bar_details = my_data_row.iloc[index[0]]
         streamlit.write(f'Detalles de la barra seleccionada: {bar_details}')
-
 
 
 streamlit.stop()
