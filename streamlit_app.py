@@ -26,7 +26,7 @@ streamlit.dataframe(my_data_row)
 
 # Crear un gráfico de barras
 fig, ax = plt.subplots()
-ax.bar(df['NAME'], df['SUM'])
+ax.bar(my_data_row['NAME'], my_data_row['SUM'])
 
 # Añadir título y etiquetas a los ejes
 ax.set_title('Gráfico de Barras')
