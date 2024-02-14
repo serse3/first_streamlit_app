@@ -17,16 +17,14 @@ my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 #Ejecuto la consulta
 my_cur.execute("""
-SELECT TIMEPOINT.SERIES_CODE, SCM.NAME, TIMEPOINT.VALUE FROM TIMEPOINT 
-JOIN SERIES AS SCM ON SCM.SERIES_CODE = TIMEPOINT.SERIES_CODE
-WHERE TIMEPOINT.SERIES_CODE ='SR1223104' ORDER BY DATE DESC;
-
+SELECT SCM.NAME, sum(TIMEPOINT.VALUE) FROM TIMEPOINT 
+JOIN SERIES AS SCM ON SCM.SERIES_CODE = TIMEPOINT.SERIES_CODE GROUP BY SCM.NAME
 """)
 
 #Recupero la primera fila de mi consulta: 
 my_data_row = my_cur.fetch_pandas_all()
 #Muestro por pantalla un texto:
-streamlit.text("Hello from Snowflake:")
+streamlit.text("Hello from Snowflake: ")
 #Muestro la primera fila recuperada
 streamlit.dataframe(my_data_row)
 
