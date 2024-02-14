@@ -14,8 +14,17 @@ my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 #Ejecuto la consulta
 my_cur.execute("""
-SELECT SCM.NAME, sum(TIMEPOINT.VALUE) as "SUM" FROM TIMEPOINT 
-JOIN SERIES AS SCM ON SCM.SERIES_CODE = TIMEPOINT.SERIES_CODE GROUP BY SCM.NAME
+WITH ranked_data AS (
+    SELECT SCM.NAME, 
+           TIMEPOINT.VALUE,
+           RANK() OVER (PARTITION BY SCM.SERIES_CODE ORDER BY TIMEPOINT.DATE DESC) AS rank
+    FROM SERIES AS SCM 
+    JOIN TIMEPOINT ON SCM.SERIES_CODE = TIMEPOINT.SERIES_CODE
+)
+SELECT NAME, SUM(VALUE) AS "SUM"
+FROM ranked_data
+WHERE rank = 1
+GROUP BY NAME
 """)
 #Df con mis datos: 
 my_data_row = my_cur.fetch_pandas_all()
