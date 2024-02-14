@@ -41,8 +41,7 @@ ax.plot(x, y, '-b', label='Sinusoidal')
 ax.legend()
 
 # Mostrar el gráfico en Streamlit
-st.pyplot(fig)
-
+streamlit.pyplot(fig)
 
 streamlit.stop()
 
