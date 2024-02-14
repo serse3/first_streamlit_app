@@ -43,6 +43,25 @@ ax.legend()
 # Mostrar el gráfico en Streamlit
 streamlit.pyplot(fig)
 
+
+#Ahora hago un gráfico de barras: 
+df = pd.DataFrame({
+    'categoria': ['A', 'B', 'C', 'D'],
+    'valor': [10, 20, 30, 40]
+})
+
+# Crear un gráfico de barras
+fig, ax = plt.subplots()
+ax.bar(df['categoria'], df['valor'])
+
+# Añadir título y etiquetas a los ejes
+ax.set_title('Gráfico de Barras')
+ax.set_xlabel('Categoría')
+ax.set_ylabel('Valor')
+
+# Mostrar el gráfico en Streamlit
+st.pyplot(fig)
+
 streamlit.stop()
 
 
