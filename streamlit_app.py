@@ -50,6 +50,8 @@ df = pandas.DataFrame({
     'valor': [10, 20, 30, 40]
 })
 
+streamlit.dataframe(df)
+
 # Crear un gráfico de barras
 fig, ax = plt.subplots()
 ax.bar(df['categoria'], df['valor'])
