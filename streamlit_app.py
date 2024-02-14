@@ -20,7 +20,7 @@ JOIN SERIES AS SCM ON SCM.SERIES_CODE = TIMEPOINT.SERIES_CODE GROUP BY SCM.NAME
 #Df con mis datos: 
 my_data_row = my_cur.fetch_pandas_all()
 
-my_data_row = my_data_row.SORT_VALUES(by='SUM', ascending = False)
+my_data_row = my_data_row.sort_values(by='SUM', ascending = False)
 
 streamlit.dataframe(my_data_row)
 
