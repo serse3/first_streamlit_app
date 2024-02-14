@@ -32,13 +32,11 @@ my_data_row = my_cur.fetch_pandas_all()
 my_data_row = my_data_row.sort_values(by='SUM', ascending = False)
 my_data_row = my_data_row[my_data_row['SUM']>50]
 
-
 streamlit.dataframe(my_data_row)
 
 # Crear un gráfico de barras
 fig, ax = plt.subplots()
 ax.bar(my_data_row['NAME'], my_data_row['SUM'])
-
 
 # Añadir título y etiquetas a los ejes
 ax.set_title('Gráfico de Barras')
@@ -47,17 +45,17 @@ ax.set_ylabel('SUM')
 plt.xticks(rotation=90)
 
 # Mostrar el gráfico en Streamlit
-st.pyplot(fig, use_container_width=True)
+streamlit.pyplot(fig, use_container_width=True)
 
 # Capturar la selección del usuario
-bar_clicked = st.pyplot()
+bar_clicked = streamlit.pyplot()
 if bar_clicked:
     # Obtener la barra seleccionada
     index = bar_clicked.image_data.element.get_cursor_data()
     if index:
         # Obtener los detalles de la barra seleccionada
         bar_details = my_data_row.iloc[index[0]]
-        st.write(f'Detalles de la barra seleccionada: {bar_details}')
+        streamlit.write(f'Detalles de la barra seleccionada: {bar_details}')
 
 
 
