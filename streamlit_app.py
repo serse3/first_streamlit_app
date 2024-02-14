@@ -45,7 +45,7 @@ ax.set_ylabel('SUM')
 plt.xticks(rotation=90)
 
 # Mostrar el gráfico en Streamlit
-st.pyplot(fig, use_container_width=True)
+streamlit.pyplot(fig, use_container_width=True)
 
 # Capturar la selección del usuario
 bar_clicked = streamlit.pyplot()
