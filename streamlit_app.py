@@ -3,6 +3,8 @@ import pandas
 import snowflake.connector
 import requests
 from urllib.error import URLError
+import matplotlib.pyplot as plt
+import numpy as np
 
 #Starting: 
 streamlit.header('World data view')
@@ -28,6 +30,18 @@ streamlit.text("Hello from Snowflake:")
 #Muestro la primera fila recuperada
 streamlit.dataframe(my_data_row)
 
+
+# Generar datos de muestra
+x = np.linspace(0, 10, 50)
+y = np.sin(x)
+
+# Crear un gráfico de líneas
+fig, ax = plt.subplots()
+ax.plot(x, y, '-b', label='Sinusoidal')
+ax.legend()
+
+# Mostrar el gráfico en Streamlit
+st.pyplot(fig)
 
 
 streamlit.stop()
