@@ -60,7 +60,7 @@ ax.set_xlabel('Categoría')
 ax.set_ylabel('Valor')
 
 # Mostrar el gráfico en Streamlit
-st.pyplot(fig)
+streamlit.pyplot(fig)
 
 streamlit.stop()
 
