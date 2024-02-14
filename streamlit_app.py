@@ -26,10 +26,11 @@ FROM ranked_data
 WHERE rank = 1
 GROUP BY NAME
 """)
+
 #Df con mis datos: 
 my_data_row = my_cur.fetch_pandas_all()
-
 my_data_row = my_data_row.sort_values(by='SUM', ascending = False)
+my_data_row = my_data_row[my_data_row['SUM']>50]
 
 streamlit.dataframe(my_data_row)
 
