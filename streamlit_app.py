@@ -32,16 +32,19 @@ my_data_row = my_cur.fetch_pandas_all()
 my_data_row = my_data_row.sort_values(by='SUM', ascending = False)
 my_data_row = my_data_row[my_data_row['SUM']>50]
 
+
 streamlit.dataframe(my_data_row)
 
 # Crear un gráfico de barras
 fig, ax = plt.subplots()
 ax.bar(my_data_row['NAME'], my_data_row['SUM'])
 
+
 # Añadir título y etiquetas a los ejes
 ax.set_title('Gráfico de Barras')
 ax.set_xlabel('NAME')
 ax.set_ylabel('SUM')
+plt.xticks(rotation=90)
 
 # Mostrar el gráfico en Streamlit
 streamlit.pyplot(fig)
