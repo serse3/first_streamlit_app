@@ -7,57 +7,31 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #Starting: 
-streamlit.header('World data view')
-
-#Quiero ver si la comunicación con snowflake funciona correctamente:
-
+streamlit.header('China population view:')
 #Estoy realizando una conexión con snowflake
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 #Creo un cursor para ejecutar una consulta. 
 my_cur = my_cnx.cursor()
 #Ejecuto la consulta
 my_cur.execute("""
-SELECT SCM.NAME, sum(TIMEPOINT.VALUE) FROM TIMEPOINT 
+SELECT SCM.NAME, sum(TIMEPOINT.VALUE) as 'SUM' FROM TIMEPOINT 
 JOIN SERIES AS SCM ON SCM.SERIES_CODE = TIMEPOINT.SERIES_CODE GROUP BY SCM.NAME
 """)
 
-#Recupero la primera fila de mi consulta: 
+#Df con mis datos: 
 my_data_row = my_cur.fetch_pandas_all()
-#Muestro por pantalla un texto:
-streamlit.text("Hello from Snowflake: ")
-#Muestro la primera fila recuperada
+
+
 streamlit.dataframe(my_data_row)
-
-
-# Generar datos de muestra
-x = np.linspace(0, 10, 50)
-y = np.sin(x)
-
-# Crear un gráfico de líneas
-fig, ax = plt.subplots()
-ax.plot(x, y, '-b', label='Sinusoidal')
-ax.legend()
-
-# Mostrar el gráfico en Streamlit
-streamlit.pyplot(fig)
-
-
-#Ahora hago un gráfico de barras: 
-df = pandas.DataFrame({
-    'categoria': ['A', 'B', 'C', 'D'],
-    'valor': [10, 20, 30, 40]
-})
-
-streamlit.dataframe(df)
 
 # Crear un gráfico de barras
 fig, ax = plt.subplots()
-ax.bar(df['categoria'], df['valor'])
+ax.bar(df['NAME'], df['SUM'])
 
 # Añadir título y etiquetas a los ejes
 ax.set_title('Gráfico de Barras')
-ax.set_xlabel('Categoría')
-ax.set_ylabel('Valor')
+ax.set_xlabel('NAME')
+ax.set_ylabel('SUM')
 
 # Mostrar el gráfico en Streamlit
 streamlit.pyplot(fig)
