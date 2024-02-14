@@ -45,7 +45,7 @@ streamlit.pyplot(fig)
 
 
 #Ahora hago un gráfico de barras: 
-df = pd.DataFrame({
+df = pandas.DataFrame({
     'categoria': ['A', 'B', 'C', 'D'],
     'valor': [10, 20, 30, 40]
 })
@@ -97,14 +97,6 @@ streamlit.header("Fruityvice Fruit Advice!")
 streamlit.markdown("<style>h1{color: red; font-style:italic;}</style>",unsafe_allow_html=True)
 
 getFruit()
-
-
-
-
-
-
-
-
 
 
 #Hacemos otra llamada a snowflake para recuperar datos:
