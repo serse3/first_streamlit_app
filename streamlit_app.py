@@ -14,13 +14,11 @@ my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 #Ejecuto la consulta
 my_cur.execute("""
-SELECT SCM.NAME, sum(TIMEPOINT.VALUE) as 'SUM' FROM TIMEPOINT 
+SELECT SCM.NAME, sum(TIMEPOINT.VALUE) as "SUM" FROM TIMEPOINT 
 JOIN SERIES AS SCM ON SCM.SERIES_CODE = TIMEPOINT.SERIES_CODE GROUP BY SCM.NAME
 """)
-
 #Df con mis datos: 
 my_data_row = my_cur.fetch_pandas_all()
-
 
 streamlit.dataframe(my_data_row)
 
@@ -37,8 +35,6 @@ ax.set_ylabel('SUM')
 streamlit.pyplot(fig)
 
 streamlit.stop()
-
-
 def Top():    
   # Read the fruit list from a CSV file
   my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt") 
