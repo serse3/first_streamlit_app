@@ -1,2 +1,4 @@
 #requirements.txt
 snowflake-connector-python
+matplotlib==3.5.1
+numpy==1.22.3
