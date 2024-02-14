@@ -47,7 +47,19 @@ ax.set_ylabel('SUM')
 plt.xticks(rotation=90)
 
 # Mostrar el gráfico en Streamlit
-streamlit.pyplot(fig)
+st.pyplot(fig, use_container_width=True)
+
+# Capturar la selección del usuario
+bar_clicked = st.pyplot()
+if bar_clicked:
+    # Obtener la barra seleccionada
+    index = bar_clicked.image_data.element.get_cursor_data()
+    if index:
+        # Obtener los detalles de la barra seleccionada
+        bar_details = my_data_row.iloc[index[0]]
+        st.write(f'Detalles de la barra seleccionada: {bar_details}')
+
+
 
 streamlit.stop()
 def Top():    
