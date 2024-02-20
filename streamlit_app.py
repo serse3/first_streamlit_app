@@ -26,16 +26,36 @@ FROM ranked_data
 WHERE rank = 1
 GROUP BY NAME
 """)
-
 #Df con mis datos: 
 my_data_row = my_cur.fetch_pandas_all()
+#Ordeno por cantidad
 my_data_row = my_data_row.sort_values(by='SUM', ascending = False)
 #Si no tienen mas de 50 k los filtro.
 my_data_row = my_data_row[my_data_row['SUM']>50]
-#Tengo que añadir una columna con los datos de ubicación. 
-
+#Inicio el geolocalizador: 
+geolocator = Nominatim(user_agent ="geoapiExercises")
+#Hago una función para obtener la longitud y latitud: 
+def get_lat_lon(region)
+    location = geolocator.geocode(region +", China")
+    if location: 
+        return location.latitude,location.longitude
+    else: 
+        return None,None
+#Función para eliminar las palabras clave: 
+def eliminar_palabras_clave(texto): 
+    for palabra in palabras_clave:
+        texto = texto.replace(palabra, '')
+    return texto
+#Añado la lista de palabras clave: 
+palabras_a_eliminar =['CN:','Population:', 'Registered:' 'more than Half Year:']
+#Llamo a la función para eliminar: 
+my_data_row['Region_Name'] = my_data_row['NAME'].apply(palabtas_a_eliminar)
+#Aplico la función en todo el df: 
+my_data_row['lat_lon'] = my_data_row['Region_Name'].apply(get_lat_lon)
+# Aplica la función para obtener latitud y longitud
+my_data_row[['lat','lon']] = pd.DataFrame(my_data_row['lat_lon'].tolist(),index = df.index                          
 #Muestro el df -> Pero lo comento porque no quiero un df ahora. 
-#streamlit.dataframe(my_data_row)
+streamlit.dataframe(my_data_row)
 
 
 
