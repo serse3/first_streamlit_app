@@ -36,7 +36,7 @@ my_data_row = my_data_row[my_data_row['SUM']>50]
 #Inicio el geolocalizador: 
 geolocator = Nominatim(user_agent ="geoapiExercises")
 #Hago una función para obtener la longitud y latitud: 
-def get_lat_lon(region)
+def get_lat_lon(region):
     location = geolocator.geocode(region +", China")
     if location: 
         return location.latitude,location.longitude
