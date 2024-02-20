@@ -56,7 +56,7 @@ st.dataframe(my_data_row)
 my_data_row['lat_lon'] = my_data_row['Region_Name'].apply(get_lat_lon)
 st.dataframe(my_data_row)
 # Aplica la función para obtener latitud y longitud
-my_data_row[['lat','lon']] = pd.DataFrame(my_data_row['lat_lon'].tolist(),index = my_data_row.index                          
+my_data_row[['lat','lon']] = pd.DataFrame(my_data_row['lat_lon'].tolist(),index = my_data_row.index)                       
 #Muestro el df -> Pero lo comento porque no quiero un df ahora. 
 st.dataframe(my_data_row)
 
