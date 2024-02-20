@@ -5,6 +5,7 @@ import requests
 from urllib.error import URLError
 import matplotlib.pyplot as plt
 import numpy as np
+import geopy
 
 #Starting: 
 st.header('China population view:')
