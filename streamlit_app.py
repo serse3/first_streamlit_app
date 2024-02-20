@@ -50,6 +50,7 @@ def eliminar_palabras_clave(texto):
 #Añado la lista de palabras clave: 
 palabras_a_eliminar =['CN:','Population:', 'Registered:', 'more than Half Year:']
 #Llamo a la función para eliminar: 
+st.dataframe(my_data_row)
 my_data_row['Region_Name'] = my_data_row['NAME'].apply(eliminar_palabras_clave)
 st.dataframe(my_data_row)
 #Aplico la función en todo el df: 
