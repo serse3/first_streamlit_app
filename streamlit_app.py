@@ -30,7 +30,7 @@ GROUP BY NAME
 my_data_row = my_cur.fetch_pandas_all()
 #Ordeno por cantidad
 my_data_row = my_data_row.sort_values(by='SUM', ascending = False)
-
+st.dataframe(my_data_row)
 #Si no tienen mas de 50 k los filtro.
 my_data_row = my_data_row[my_data_row['SUM']>50]
 #Inicio el geolocalizador: 
