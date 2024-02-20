@@ -30,6 +30,7 @@ GROUP BY NAME
 my_data_row = my_cur.fetch_pandas_all()
 #Ordeno por cantidad
 my_data_row = my_data_row.sort_values(by='SUM', ascending = False)
+
 #Si no tienen mas de 50 k los filtro.
 my_data_row = my_data_row[my_data_row['SUM']>50]
 #Inicio el geolocalizador: 
@@ -50,8 +51,10 @@ def eliminar_palabras_clave(texto):
 palabras_a_eliminar =['CN:','Population:', 'Registered:' 'more than Half Year:']
 #Llamo a la función para eliminar: 
 my_data_row['Region_Name'] = my_data_row['NAME'].apply(palabtas_a_eliminar)
+streamlit.dataframe(my_data_row)
 #Aplico la función en todo el df: 
 my_data_row['lat_lon'] = my_data_row['Region_Name'].apply(get_lat_lon)
+streamlit.dataframe(my_data_row)
 # Aplica la función para obtener latitud y longitud
 my_data_row[['lat','lon']] = pd.DataFrame(my_data_row['lat_lon'].tolist(),index = df.index                          
 #Muestro el df -> Pero lo comento porque no quiero un df ahora. 
