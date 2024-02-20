@@ -30,9 +30,14 @@ GROUP BY NAME
 #Df con mis datos: 
 my_data_row = my_cur.fetch_pandas_all()
 my_data_row = my_data_row.sort_values(by='SUM', ascending = False)
+#Si no tienen mas de 50 k los filtro.
 my_data_row = my_data_row[my_data_row['SUM']>50]
+#Tengo que añadir una columna con los datos de ubicación. 
 
-streamlit.dataframe(my_data_row)
+#Muestro el df -> Pero lo comento porque no quiero un df ahora. 
+#streamlit.dataframe(my_data_row)
+
+
 
 # Crear un gráfico de barras
 fig, ax = plt.subplots()
